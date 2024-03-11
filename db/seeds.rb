@@ -7,3 +7,16 @@
 #   ["Action", "Comedy", "Drama", "Horror"].each do |genre_name|
 #     MovieGenre.find_or_create_by!(name: genre_name)
 #   end
+
+require "faker"
+
+Con.destroy_all
+
+100.times do
+  Con.new(
+    name: Faker::Name.name,
+    decription: "Vraiment très con pour animer vos soirées. Avec lui, vous avez les meilleures chances de gagner!",
+    category: ["con de droite", "collectionneur", "hobbie bizarre", "con de gauche", "fanatique", "mysogine", "beauf"]
+  )
+  con.save!
+end
