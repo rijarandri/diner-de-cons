@@ -1,5 +1,5 @@
 class BookingsController < ApplicationController
-  before_action :set_booking
+  before_action :set_booking, only: [:accept, :refuse]
   before_action :set_con, only: %i[new create]
 
   def accept
@@ -15,7 +15,6 @@ class BookingsController < ApplicationController
   end
 
   def create
-    @con = find
     @booking = Booking.new(booking_params)
     @booking.con = @con
     @booking.user = current_user

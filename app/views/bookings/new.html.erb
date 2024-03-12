@@ -1,0 +1,8 @@
+<h1>Book<%= @con.name %> for your party !! </h1>
+
+<%= simple_form_for [@con, @booking] do |f| %>
+  <%= f.input :date,
+              as: :string,
+              input_html: { data: { controller: "datepicker" } } %>
+  <%= f.submit "Submit comment", class: "btn btn-primary" %>
+<% end %>
