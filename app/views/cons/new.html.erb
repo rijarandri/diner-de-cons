@@ -1,0 +1,10 @@
+<h1>Page pour créer un nouveau CON</h1>
+
+<%= simple_form_for @con do |f| %>
+  <%= f.input :photos, as: :file, input_html: { multiple: true } %>
+  <%= f.input :name %>
+  <%= f.input :category, collection: ["con de droite", "chroniqueur france inter", "mysogine", "beauf", "supporter de foot", "zadiste", "influenceur", "avocat fiscaliste", "conspirationniste", "Pascal Praud"] %>
+  <%= f.input :description %>
+  <%= f.input :price %>
+  <%= f.button :submit %>
+<% end %>
