@@ -1,1 +1,30 @@
-<h1>Coucou c'est le profil</h1>
+<div class="container">
+<div class="container">
+  <div class="row">
+    <div class="col-md-6">
+      <div class="border border-black">
+        <h1>Recapitulfatif de mes réservations</h1>
+        <ul>
+          <% @cons.first(5).each do |con| %>
+            <li><%= con.name %></li>
+            <li><%= con.description %></li>
+            <li><%= con.category %></li>
+          <% end %>
+        </ul>
+      </div>
+    </div>
+    <div class="col-md-3">
+      <%= link_to "Voir mes cons", "#" %>
+    </div>
+    <div class="col-md-3">
+      <%= link_to "Créer un con", new_con_path %>
+    </div>
+  </div>
+<div>
+  <%= link_to "Accepter ma réservation", "#", class:"btn btn-success mt-4"%>
+</div>
+<div>
+  <%= link_to "Refuser ma réservation", "#", class:"btn btn-danger mt-4" %>
+</div>
+
+</div>

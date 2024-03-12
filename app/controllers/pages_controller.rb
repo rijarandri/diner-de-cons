@@ -3,9 +3,9 @@ class PagesController < ApplicationController
   end
 
   def profile
-    # @user = user.find(current_user.cons)
-    # @cons = con.all
-    # # current_user.cons
+    #
+    @user = current_user
+    @cons = @user.cons
   end
 end
 
