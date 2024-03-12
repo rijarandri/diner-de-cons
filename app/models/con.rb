@@ -1,5 +1,6 @@
 class Con < ApplicationRecord
-  CATEGORY = ["con de droite", "collectionneur", "hobbie bizarre", "con de gauche", "fanatique", "mysogine", "beauf"]
+  CATEGORY = ["con de droite", "chroniqueur france inter", "mysogine", "beauf", "supporter de foot", "zadiste", "influenceur", "avocat fiscaliste", "conspirationniste", "Pascal Praud"]
+
   has_many :bookings, dependent: :destroy
   belongs_to :user
   has_many_attached :photos
