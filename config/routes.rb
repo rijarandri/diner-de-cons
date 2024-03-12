@@ -1,12 +1,10 @@
 Rails.application.routes.draw do
   devise_for :users
 
-
-  root to: "pages#home"
-
   get "profile", to: "pages#profile"
 
-
+  root to: "cons#index"
+  
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
 
   resources :cons do #index/show/new/create/edit/update/destroy
