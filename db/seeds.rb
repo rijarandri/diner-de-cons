@@ -12,11 +12,13 @@ require "faker"
 
 Con.destroy_all
 
-100.times do
-  Con.new(
+50.times do
+  con = Con.new(
     name: Faker::Name.name,
-    decription: "Vraiment très con pour animer vos soirées. Avec lui, vous avez les meilleures chances de gagner!",
-    category: ["con de droite", "collectionneur", "hobbie bizarre", "con de gauche", "fanatique", "mysogine", "beauf"]
+    price: 100,
+    description: "Vraiment très con pour animer vos soirées. Avec lui, vous avez les meilleures chances de gagner!",
+    category: ["con de droite", "chroniqueur france inter", "mysogine", "beauf", "supporter de foot", "zadiste", "influenceur", "avocat fiscaliste", "conspirationniste", "Pascal Praud"].sample,
+    user_id: 1
   )
   con.save!
 end
