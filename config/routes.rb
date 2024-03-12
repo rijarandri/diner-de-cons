@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
-  root to: "pages#home"
+  devise_for :users
+  root to: "home#index"
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
   resources :cons do
     resources :bookings, only: [:new, :create]
