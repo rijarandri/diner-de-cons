@@ -1,0 +1,9 @@
+<h1>Hello c'est la liste des cons</h1>
+
+
+<% @cons.each do |con| %>
+ <%= link_to con.name, con_path(con) %>
+ <p><strong>Catégorie:</strong> <%= con.category %></p>
+ <p><strong>Description :</strong> <%= con.description %></p>
+ <p><strong>Prix:</strong> <%= con.price %></p>
+<% end %>
