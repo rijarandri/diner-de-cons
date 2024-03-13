@@ -1,11 +1,13 @@
 class ConsController < ApplicationController
 
   def index
-      @cons = Con.all
+    @cons = Con.all
   end
 
   def show
     @con = Con.find(params[:id])
+    @booking = Booking.new
+    @booking_dates = @con.bookings.map {|b| b.date}
   end
 
   def new

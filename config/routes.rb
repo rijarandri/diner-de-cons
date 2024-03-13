@@ -6,9 +6,8 @@ Rails.application.routes.draw do
   root to: "cons#index"
   
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
-
-  resources :cons do #index/show/new/create/edit/update/destroy
-    resources :bookings, only: [:new, :create]
+  resources :cons do
+    resources :bookings, only: [:create]
   end
   patch "accept", to: "bookings#accept"
   patch "refuse", to: "bookings#refuse"
