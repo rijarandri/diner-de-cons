@@ -1,6 +1,6 @@
 class BookingsController < ApplicationController
   before_action :set_booking, only: [:accept, :refuse]
-  before_action :set_con, only: %i[new create]
+  before_action :set_con, only: %i[create]
 
   def accept
     @booking.update(accepted: true)
@@ -10,10 +10,10 @@ class BookingsController < ApplicationController
     booking.update(accepted: false)
   end
 
-  def new
-    @booking = Booking.new
-    @booking_dates = @con.bookings.map {|b| b.date}
-  end
+  # def new
+  #   @booking = Booking.new
+  #   @booking_dates = @con.bookings.map {|b| b.date}
+  # end
 
   def create
     @booking = Booking.new(booking_params)
