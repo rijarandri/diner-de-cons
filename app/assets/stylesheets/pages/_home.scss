@@ -1,1 +1,27 @@
 // Specific CSS for your home-page
+
+.cards {
+  display: grid;
+  // align-items: center;
+  grid-template-columns: 1fr 1fr 1fr 1fr;
+  grid-gap: 16px;
+}
+
+.card {
+  margin-bottom: 16px;
+  border-radius: 16px;
+}
+
+.card-img-top {
+  border-top-left-radius: 16px;
+  border-top-right-radius: 16px;
+}
+
+h1 {
+  text-align: center;
+  margin-top: 30px;
+}
+
+h1 strong {
+  color: rgb(255, 25, 95);
+}
