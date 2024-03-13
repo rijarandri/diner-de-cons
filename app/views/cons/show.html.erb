@@ -1,5 +1,10 @@
 <h1>C'est la show du CON</h1>
 
+<% if @con.photos.attached? %>
+<% @con.photos.each do |photo| %>
+  <%= cl_image_tag photo.key, height: 300, width: 400, crop: :fill %>
+  <% end %>
+<% end %>
 <h1><%= @con.name %></h1>
 <p>
 <p>
