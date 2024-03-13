@@ -4,9 +4,15 @@ Rails.application.routes.draw do
   get "profile", to: "pages#profile"
 
   root to: "cons#index"
+<<<<<<< HEAD
 
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
     resources :cons do
+=======
+  
+  # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
+  resources :cons do
+>>>>>>> master
     resources :bookings, only: [:create]
   end
   patch "accept", to: "bookings#accept"
