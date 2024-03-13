@@ -1,16 +1,14 @@
 <h1>C'est la show du CON</h1>
 
-<% if @con.photos.attached? %>
-<% @con.photos.each do |photo| %>
-  <%= cl_image_tag photo.key, height: 300, width: 400, crop: :fill %>
-  <% end %>
-<% end %>
-
 <h1><%= @con.name %></h1>
 <p>
 <p>
   <strong>Catégorie :</strong>
   <%= @con.category %>
+  <% @con.bookings.each do |booking| %>
+    <%= booking.date %>
+  <% end %>
+
   <p><strong>Description :</strong>
   <%= @con.description %>
 </p>
@@ -19,6 +17,7 @@
   <%= @con.price %>
 </p>
 
+<%= link_to "Book this con for your party", new_con_booking_path(@con) %>
 
 
 <%= link_to "Back to home page", root_path %>

@@ -1,0 +1,10 @@
+<h1>Book <%= @con.name %> for your party !! </h1>
+<p>When do you need <%= @con.name %>?</p>
+<%= simple_form_for [@con, @booking] do |f| %>
+  <%= f.input :date,
+              as: :string,
+              input_html: { data: { controller: "datepicker", datepicker_booking_value: @booking_dates.to_json } } %>
+  <p>Price: <%= @con.price %>€</p>
+  <p>Confirm your choice: </p>
+  <%= f.submit "I want #{@con.name} for my party", class: "btn btn-primary" %>
+<% end %>
