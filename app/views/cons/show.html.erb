@@ -1,0 +1,33 @@
+<h1>C'est la show du CON</h1>
+
+<% if @con.photos.attached? %>
+<% @con.photos.each do |photo| %>
+  <%= cl_image_tag photo.key, height: 300, width: 400, crop: :fill %>
+  <% end %>
+<% end %>
+<h1><%= @con.name %></h1>
+<p>
+<p>
+  <strong>Catégorie :</strong>
+
+  <p><strong>Description :</strong>
+  <%= @con.description %>
+</p>
+</p>
+  <strong>Prix :</strong>
+  <%= @con.price %>
+</p>
+
+<h3>Book <%= @con.name %> for your party !! </h3>
+<p>When do you need <%= @con.name %>?</p>
+<%= simple_form_for [@con, @booking] do |f| %>
+  <%= f.input :date,
+              as: :string,
+              input_html: { data: { controller: "datepicker", datepicker_booking_value: @booking_dates.to_json } } %>
+  <p>Price: <%= @con.price %>€</p>
+  <p>Confirm your choice: </p>
+  <%= f.submit "I want #{@con.name} for my party", class: "btn btn-primary" %>
+<% end %>
+
+
+<%= link_to "Back to home page", root_path %>
