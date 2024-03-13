@@ -4,6 +4,7 @@ Rails.application.routes.draw do
   get "profile", to: "pages#profile"
 
   root to: "cons#index"
+
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
   resources :cons do
     resources :bookings, only: [:create]
