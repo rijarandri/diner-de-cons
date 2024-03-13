@@ -1,93 +1,121 @@
-<div class="container">
-  <div class="row">
-    <div class="col-md-4">
-
-
+<div class="reservations-profile">
 
 <%# je n'arrive pas à shuffle un autre con %>
-<h2> Récapitulatif de mes réservations</h2>
+<div class="user-reservations">
+  <h2> Récapitulatif de mes réservations</h2> <br>
+    <% @cons.first(3).each do |con| %>
+      <div class="accordion accordion-flush" id="accordionFlushExample">
+        <div class="accordion-item">
+          <h2 class="accordion-header">
+            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapseOne" aria-expanded="false" aria-controls="flush-collapseOne">
+                  <%= con.name %>
+            </button>
+          </h2>
 
-  <div class="accordion accordion-flush" id="accordionFlushExample">
-    <div class="accordion-item">
-      <h2 class="accordion-header">
-        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapseOne" aria-expanded="false" aria-controls="flush-collapseOne">
-              <% @cons.first(1).each do |con| %>
-              <%= con.name %>
-        </button>
-      </h2>
-      <div id="flush-collapseOne" class="accordion-collapse collapse" data-bs-parent="#accordionFlushExample">
-        <div class="accordion-body">
-              <li><%= con.description %></li>
-              <li><%= con.category %></li>  <% end %>
+          <div id="flush-collapseOne" class="accordion-collapse collapse" data-bs-parent="#accordionFlushExample">
+            <div class="accordion-body">
+                  <li><%= con.description %></li>
+                  <li><%= con.category %></li>
+            </div>
+          </div>
         </div>
       </div>
-    </div>
+    <% end %>
 
-    <div class="accordion-item">
-      <h2 class="accordion-header">
-        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapseTwo" aria-expanded="false" aria-controls="flush-collapseTwo">
-            <% @cons.first(1).each do |con| %>
-            <%= con.name %>
-        </button>
-      </h2>
-      <div id="flush-collapseTwo" class="accordion-collapse collapse" data-bs-parent="#accordionFlushExample">
-        <div class="accordion-body"><li><%= con.description %></li>
-              <li><%= con.category %></li>  <% end %></div>
+      <div>
+      <%= link_to "Accepter ma réservation", "#", class:"btn btn-success mt-4 rounded-4 mb-4"%>
       </div>
-    </div>
-
-    <div class="accordion-item">
-      <h2 class="accordion-header">
-        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapseThree" aria-expanded="false" aria-controls="flush-collapseThree">
-          <% @cons.first(1).each do |con| %>
-          <%= con.name %>
-        </button>
-      </h2>
-      <div id="flush-collapseThree" class="accordion-collapse collapse" data-bs-parent="#accordionFlushExample">
-        <div class="accordion-body"><li><%= con.description %></li>
-              <li><%=  con.category %></li>  <% end %></div>
+      <div>
+        <%= link_to "Refuser ma réservation", "#", class:"btn btn-danger mt-4, rounded-4" %>
       </div>
-    </div>
-  </div>
-    </div>
-
-    <div class="col-md-3">
-      <%= link_to "Voir mes cons", "#", class:"btn btn-secondary"  %>
-    </div>
-
-<div class="col-md-3" class="card" style="width: 18rem;">
-  <img src="https://images.unsplash.com/photo-1612186001784-73457efa28bb?q=80&w=3087&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" class="card-img-top rounded-4" alt="...">
-  <div class="card-body">
-    <h5 class="card-title">  </h5>
-
-  <div class="accordion accordion-flush" id="accordionFlushExample">
-    <div class="accordion-item">
-      <h2 class="accordion-header">
-            <div>
-        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapseOne" aria-expanded="false" aria-controls="flush-collapseOne">
-              <% @cons.first(1).each do |con| %>
-              <%= "Description" %>
-        </button>
-      </h2>
-      <div id="flush-collapseOne" class="accordion-collapse collapse" data-bs-parent="#accordionFlushExample">
-        <div class="accordion-body">
-              <%= con.description %>
-            <% end %>
-            </div>
-    </div>
-  </div>
-
-    </div>
-
+      <div>
+        <%= link_to "Créer un con", "#", class:"btn btn-success mt-4, rounded-4 mt-4" %>
+      </div>
 
 </div>
 
+  <div class="list-cons">
 
-    <%= link_to "Accepter ma réservation", "#", class:"btn btn-success mt-4 rounded-4 mb-4"%>
+      <div class="text-center "> <%= link_to "Ma liste de cons", "#", class:"btn btn-secondary mb-4 rounded-4"  %> </div>
+
+
+
+
+          <div class="row">
+            <div class="col-md-6">
+              <div class="card mb-4" style="width: 18rem;">
+                <!-- 1ere partie à gauche -->
+
+            <div class="card" style="width: 18rem;">
+
+                      <img src="https://images.unsplash.com/photo-1612186001784-73457efa28bb?q=80&w=3087&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" class="card-img-top rounded-4" alt="...">
+                      <div class="card-body">
+
+                        <h5 class="card-title"></h5>
+
+                        <div class="accordion accordion-flush" id="accordionFlushExample">
+                          <div class="accordion-item">
+                              <h2 class="accordion-header" id="headingTwo">
+                                  <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapseTwo" aria-expanded="false" aria-controls="flush-collapseTwo">
+                                        <% @cons.first(1).each do |con| %>
+                                        <%= con.name %>
+                                  </button>
+                              </h2>
+                          </div>
+                        </div>
+                        <div id="flush-collapseTwo" class="accordion-collapse collapse" data-bs-parent="#accordionFlushExample">
+                              <div class="accordion-body">
+                                    <%= con.description %>
+                                    <% end %>
+                              </div>
+                        </div>
+
+                      </div>
+
+                  </div>
+
+
+              </div>
+            </div>
+            <div class="col-md-6">
+              <div class="card mb-4" style="width: 18rem;">
+                <!-- 2eme partie à droite -->
+
+            <div class="card" style="width: 18rem;">
+
+                      <img src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?q=80&w=3087&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" class="card-img-top rounded-4" alt="...">
+                      <div class="card-body">
+
+                        <h5 class="card-title"></h5>
+
+                        <div class="accordion accordion-flush" id="accordionFlushExample">
+                          <div class="accordion-item">
+                              <h2 class="accordion-header" id="headingTwo">
+                                  <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapseTwo" aria-expanded="false" aria-controls="flush-collapseTwo">
+                                        <% @cons.first(1).each do |con| %>
+                                        <%= con.name %>
+                                  </button>
+                              </h2>
+                          </div>
+                        </div>
+                        <div id="flush-collapseTwo" class="accordion-collapse collapse" data-bs-parent="#accordionFlushExample">
+                              <div class="accordion-body">
+                                    <%= con.description %>
+                                    <% end %>
+                              </div>
+                        </div>
+
+                      </div>
+
+                  </div>
+
+              </div>
+            </div>
+          </div>
+
+
+
   </div>
-  <div>
-    <%= link_to "Refuser ma réservation", "#", class:"btn btn-danger mt-4, rounded-4" %>
-  </div>
-  <div>
-    <%= link_to "Créer un con", "#", class:"btn btn-success mt-16, rounded-4" %>
+
+
   </div>
