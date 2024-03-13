@@ -12,6 +12,7 @@ class BookingsController < ApplicationController
 
   def new
     @booking = Booking.new
+    @booking_dates = @con.bookings.map {|b| b.date}
   end
 
   def create
