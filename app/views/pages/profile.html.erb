@@ -3,7 +3,7 @@
 <%# je n'arrive pas à shuffle un autre con %>
   <div class="user-reservations">
     <h2> Mes réservations</h2> <br>
-    <% @bookings.each do |booking| %>
+    <% @user_bookings.each do |booking| %>
       <div class="accordion accordion-flush" id="accordionFlushExample">
         <div class="accordion-item">
           <% if booking.date > Date.today %>
@@ -26,12 +26,28 @@
             </div>
         </div>
       </div>
-
       <% end %>
+
+<% @bookings.each do |booking| %>
+<% if @cons.include?(booking.con) && booking.accepted != true %>
+  <div class="card" style="width: 18rem;">
+  <div class="card-body">
+    <h5 class="card-title">Someone wants to book your con! </h5>
+    <p class="card-text"><strong><%= booking.con.name%></strong></p>
+    <p class="card-text"><strong>on <%= booking.date%></strong></p>
+    <%= link_to "Confirm", accept_path(booking), data: { turbo_method: :patch, turbo_confirm: 'Confirm ?' }, class:"btn btn-success mt-4 rounded-4 mb-4"%>
+    <%= link_to "Refuse", refuse_path(booking), data: { turbo_method: :patch, turbo_confirm: 'Refuse ?' },class:"btn btn-danger mt-4, rounded-4" %>
+
+  </div>
+</div>
+<% end %>
+<% end %>
+
+
 
 
         <div>
-        <%= link_to "Accepter ma réservation", "#", class:"btn btn-success mt-4 rounded-4 mb-4"%>
+
         </div>
         <div>
           <%= link_to "Refuser ma réservation", "#", class:"btn btn-danger mt-4, rounded-4" %>
