@@ -32,6 +32,15 @@ h1 strong {
   color: rgb(255, 25, 95);
 }
 
+.card-title {
+  color: rgb(255, 25, 95);
+  font-weight: bold;
+}
+
+// .card-img-top {
+//   margin-top: 25px;
+// }
+
 // nav img {
 //   width: 180px;
 //   height: auto;
@@ -49,16 +58,11 @@ h1 strong {
 //   font-weight: bold;
 // }
 
-.card-title {
-  color: rgb(255, 25, 95);
-  font-weight: bold;
-}
-
-.card-img-top {
-  width: 160px;
-  height: 160px;
-  border-radius: 50%;
-  overflow: hidden;
-  margin: auto;
-  margin-top: 25px;
-}
+// .card-img-top {
+//   width: 160px;
+//   height: 160px;
+//   border-radius: 50%;
+//   overflow: hidden;
+//   margin: auto;
+//   margin-top: 25px;
+// }

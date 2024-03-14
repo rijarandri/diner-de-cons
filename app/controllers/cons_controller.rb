@@ -3,6 +3,12 @@ class ConsController < ApplicationController
 
   def index
     @cons = Con.all
+    @categories = ["con de droite", "chroniqueur france inter", "mysogine", "beauf", "supporter de foot", "zadiste", "influenceur", "avocat fiscaliste", "conspirationniste", "Pascal Praud"]
+    if params[:category].present?
+      @cons = Con.where(category: params[:category])
+    else
+      @cons = Con.all
+    end
   end
 
   def show
