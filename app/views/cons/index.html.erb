@@ -1,4 +1,3 @@
-
 <h1>Animez vos soirées, <strong>trouvez votre con préféré !</strong></h1>
 
   <div>
@@ -9,14 +8,14 @@
 
   <% @cons.each do |con| %>
 
-      <div class="card" style="width: 18rem;">
+      <div class="card" style="width: 18rem;" onclick="location.href='<%= con_path(con) %>'">
         <% if con.photos.attached? %>
           <% con.photos.each do |photo| %>
             <img src="<%= cl_image_path(photo.key, height: 300, width: 400, crop: :fill) %>" class="card-img-top" alt="Photo de <%= con.name %>">
           <% end %>
         <% end %>
         <div class="card-body">
-          <h5 class="card-title"><%= link_to con.name, con_path(con) %></h5>
+          <h5 class="card-title"><%= con.name %></h5>
           <p class="card-text"><strong>Description :</strong> <%= truncate(con.description, length: 25) %></p>
           <p class="card-text"><strong>Catégorie:</strong> <%= con.category %></p>
           <p class="card-text"><strong>Prix:</strong> <%= con.price %> €</p>
