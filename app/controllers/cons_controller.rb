@@ -18,7 +18,7 @@ class ConsController < ApplicationController
   def create
     @con = Con.new(con_params)
     @con.user = current_user
-    if @con.save!
+    if @con.save
       redirect_to con_path(@con)
     else
       render :new, status: :unprocessable_entity
