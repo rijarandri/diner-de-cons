@@ -1,4 +1,4 @@
-class AddLastNameAndFirstNameToUsers < ActiveRecord::Migration[7.1]
+class AddAttributesToUser < ActiveRecord::Migration[7.1]
   def change
     add_column :users, :first_name, :string
     add_column :users, :last_name, :string
