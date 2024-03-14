@@ -1,8 +1,16 @@
 <h1>Animez vos soirées, <strong>trouvez votre con préféré !</strong></h1>
 
-  <div>
-    <%= link_to "Je trouve mon con", "#", class:"btn btn-success mt-4 rounded-4 mb-4"%>
+
+<div class="row mt-5 mb-5">
+  <div class="col d-flex align-items-center justify-content-center">
+    <%= form_with url: cons_path, method: :get, local: true, class: "d-flex align-items-center" do |f| %>
+      <%= f.select :category, options_for_select(@categories, params[:category]), { prompt: "Catégorie" }, { class: "form-select" } %>
+      <%= f.submit "Je trouve mon con", class:"btn btn-success rounded-4 ms-3" %>
+    <% end %>
+
   </div>
+</div>
+
 
 <div class="cards">
 
