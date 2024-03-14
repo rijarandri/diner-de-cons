@@ -1,9 +1,22 @@
 .reservations-profile {
   display: flex;
-  justify-content: space-evenly;
+  justify-content: space-between;
 }
 
 .list-cons {
   display: flex;
   flex-direction: column;
+}
+
+.user-reservations {
+  min-width: 65vw;
+  text-align: center;
+}
+
+.mes-cons {
+
+}
+
+.mes-cards-cons {
+  max-width: 200px;
 }
