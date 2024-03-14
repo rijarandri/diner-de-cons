@@ -6,11 +6,11 @@
       <div class="div1 rounded-5 ">
         <% if @con.photos.attached? %>
         <% @con.photos.each do |photo| %>
-          <%= cl_image_tag photo.key, height: 300, width: 400, crop: :fill %>
+          <%= cl_image_tag photo.key, height: 300, width: 400, crop: :fill, class: "img-con"%>
           <% end %>
         <% else %>
         <%= cl_image_tag("7h8odfjtpjq7yo52ja1x9w98pplz",
-            width: 400, height: 300, crop: :fill) %>
+            width: 400, height: 300, crop: :fill, class: "img-con" )%>
         <% end %>
       </div>
 
