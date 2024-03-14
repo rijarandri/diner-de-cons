@@ -1,10 +1,23 @@
-<h1>Page pour créer un nouveau CON</h1>
+<div class="title">
+<h1>Créer votre propre con !</h1>
+</div>
 
-<%= simple_form_for @con do |f| %>
-  <%= f.input :photos, as: :file, input_html: { multiple: true } %>
-  <%= f.input :name %>
-  <%= f.input :category, collection: ["con de droite", "chroniqueur france inter", "mysogine", "beauf", "supporter de foot", "zadiste", "influenceur", "avocat fiscaliste", "conspirationniste", "Pascal Praud"] %>
-  <%= f.input :description %>
-  <%= f.input :price %>
-  <%= f.button :submit %>
+
+
+<div class="container p-3 mb-2 rounded-4"
+     style="background-color: rgba(53, 47, 68, 0.8);">
+
+   <%= simple_form_for @con do |f| %>
+    <%= f.input :photos, as: :file, input_html: { multiple: true }, label: "Photos" %>
+    <%= f.input :name, label: "Nom" %>
+    <%= f.input :category, collection: ["con de droite", "chroniqueur france inter", "mysogine", "beauf", "supporter de foot", "zadiste", "influenceur", "avocat fiscaliste", "conspirationniste", "Pascal Praud"], label: "Catégorie" %>
+    <%= f.input :description, label: "Description" %>
+    <%= f.input :price, label: "Prix" %>
+    <%= f.button :submit, "Je crée mon con", class:"btn btn-light rounded-4" %>
 <% end %>
+</div>
+
+
+
+
+ <%# p-5 my-5 bg-dark text-white rounded-4 %>
