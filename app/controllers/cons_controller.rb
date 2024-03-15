@@ -31,6 +31,16 @@ class ConsController < ApplicationController
     end
   end
 
+  def edit
+    @con = Con.find(params[:id])
+  end
+
+  def update
+    @con = Con.find(params[:id])
+    @con.update(con_params)
+    redirect_to con_path(@con)
+  end
+
   private
 
   def con_params
