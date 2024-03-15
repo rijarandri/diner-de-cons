@@ -1,15 +1,26 @@
 
-
+<% @bookings.each do |booking| %>
+  <% if @cons.include?(booking.con) && booking.accepted != true %>
+    <div class="accept-reservation">
+      <div class="d-flex align-items-center justify-content-between mt-4">
+          <p class="mb-1 me-3"><strong class="nr"><%= booking.con.name%></strong> en attente de confirmation le <strong><%= booking.date.strftime('%d-%m-%Y')%></strong></p>
+          <div>
+          <%= link_to "Confirm", accept_path(booking), data: { turbo_method: :patch, turbo_confirm: 'Confirm ?' }, class: "btn btn-success rounded-4 me-3 mb-0" %>
+          <%= link_to "Refuse", refuse_path(booking), data: { turbo_method: :patch, turbo_confirm: 'Refuse ?' }, class: "btn btn-danger rounded-4 mb-0" %>
+          </div>
+      </div>
+    </div>
+  <% end %>
+<% end %>
 <%# je n'arrive pas à shuffle un autre con %>
 
   <h2 class="t1 mb-4 mt-5"> Mes réservations</h2>
-
 <div class="mes-bookings">
 <div class="upc-reservations">
   <h3>Réservations à venir</h3>
   <div class="d-flex">
-  <% @bookings.each do |booking| %>
-    <% if booking.date > Date.today %>
+  <% @user_bookings.each do |booking| %>
+    <% if booking.accepted == true && booking.date > Date.today %>
       <div class="mes-cards-bookings-futur me-3">
         <% if booking.con.photos.attached? %>
           <% booking.con.photos.each do |photo| %>
@@ -30,8 +41,8 @@
 <div class="past-reservations mt-4">
   <h3>Réservations passées</h3>
   <div class="d-flex">
-  <% @bookings.each do |booking| %>
-    <% if booking.date <= Date.today %>
+  <% @user_bookings.each do |booking| %>
+    <% if booking.accepted == true && booking.date <= Date.today %>
       <div class="mes-cards-bookings-past me-3">
         <% if booking.con.photos.attached? %>
           <% booking.con.photos.each do |photo| %>
@@ -50,35 +61,29 @@
 </div>
 </div>
 
-<div class="accept-reservation">
-  <div class="d-flex align-items-center justify-content-center mt-4">
-      <p class="mb-1 me-3"><strong class="nr">1</strong> con en attente de réservation !</p>
-      <%= link_to "Accepter ma réservation", "#", class: "btn btn-success rounded-4 me-3 mb-0" %>
-      <%= link_to "Refuser ma réservation", "#", class: "btn btn-danger rounded-4 mb-0 text-white" %>
-  </div>
-</div>
 
-<div class="btn-con-create mt-4">
-  <div class="d-flex align-items-center justify-content-center">
-  <%= link_to "Créer un con", "#", class:"btn btn-success mt-4, rounded-4" %>
-  </div>
-</div>
 
 <h2 class="t1 mt-5"> Mes cons</h2>
 
+
+
 <div class="mes-cons">
   <% @user.cons.each do |con| %>
-  <div class="mes-cards-cons">
+
+      <div class="card" style="width: 18rem;" onclick="location.href='<%= con_path(con) %>'">
         <% if con.photos.attached? %>
-          <% con.photos.each do |photo| %>
-            <img src="<%= cl_image_path(con.photos.first.key, height: 100, width: 100) %>" class="card-img-top" alt="Photo de <%= con.name %>">
-          <% end %>
+            <img src="<%= cl_image_path(con.photos.first.key, height: 300, width: 400, crop: :fill) %>" class="card-img-top" alt="Photo de <%= con.name %>">
+        <% else %>
+          <img src="<%= cl_image_path("yem8637lxmnfe0cxdikcijaxtd4k", height: 300, width: 400, crop: :fill) %>" class="card-img-top" alt="Photo de <%= con.name %>">
         <% end %>
-        <div class="card-body">
+        <div class="card-body pb-4">
           <h5 class="card-title"><%= con.name %></h5>
           <p class="card-text"><strong>Description :</strong> <%= truncate(con.description, length: 25) %></p>
           <p class="card-text"><strong>Catégorie:</strong> <%= con.category %></p>
           <p class="card-text"><strong>Prix:</strong> <%= con.price %> €</p>
+          <div class="stick">
+            <p class="card-text"><%= link_to "edit", edit_con_path(con), class:"btn btn-success mt-4 rounded-4" %></p>
+          </div>
         </div>
       </div>
   <% end %>

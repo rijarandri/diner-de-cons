@@ -11,17 +11,15 @@
   </div>
 </div>
 
-
 <div class="cards">
 
   <% @cons.each do |con| %>
 
       <div class="card" style="width: 18rem;" onclick="location.href='<%= con_path(con) %>'">
         <% if con.photos.attached? %>
-          <% con.photos.each do |photo| %>
+          <% photo = con.photos.first %>
             <img src="<%= cl_image_path(photo.key, height: 300, width: 400, crop: :fill) %>" class="card-img-top" alt="Photo de <%= con.name %>">
           <% end %>
-        <% end %>
         <div class="card-body">
           <h5 class="card-title"><%= con.name %></h5>
           <p class="card-text"><strong>Description :</strong> <%= truncate(con.description, length: 25) %></p>

@@ -1,98 +1,44 @@
-<h1><%= @con.name %></h1>
-<br><br>
+<h1 class="con-name"><%= @con.name %></h1>
 
-    <div class="parent, d-flex justify-content-evenly ">
+<div class="container">
+  <div class="con-img">
+    <% if @con.photos.attached? %>
+    <% @con.photos.each do |photo| %>
+      <%= cl_image_tag photo.key, height: 300, width: 400, crop: :fill, class: "img-con"%>
+      <% end %>
+    <% else %>
+    <%= cl_image_tag("7h8odfjtpjq7yo52ja1x9w98pplz",
+        width: 400, height: 300, crop: :fill, class: "img-con" )%>
+    <% end %>
+  </div>
 
-      <div class="div1 rounded-5 ">
-        <% if @con.photos.attached? %>
-        <% @con.photos.each do |photo| %>
-          <%= cl_image_tag photo.key, height: 300, width: 400, crop: :fill, class: "img-con"%>
-          <% end %>
-        <% else %>
-        <%= cl_image_tag("7h8odfjtpjq7yo52ja1x9w98pplz",
-            width: 400, height: 300, crop: :fill, class: "img-con" )%>
+  <div class="row align-items-start">
+    <div class="col-md-9 d-flex align-items-center">
+      <div class="con-description">
+        <strong class="textcat">Catégorie </strong> : <%= @con.category %>
+        <p>Pour passer des soirées mémorables "<%= @con.name %>" saura vous faire mourrir de rire.</p>
+        <strong class="textcat">Description </strong> : <%= @con.description %>
+      </div>
+    </div>
+
+    <div class="col-md-3">
+      <div class="con-reservation">
+        <h4>Réserve <%= @con.name %> pour ta soirée !</h4>
+        <p>Disponibilités de <%= @con.name %></p>
+        <%= simple_form_for [@con, @booking] do |f| %>
+          <%= f.input :date,
+                      as: :string,
+                      input_html: { data: { controller: "datepicker", datepicker_booking_value: @booking_dates.to_json } } %>
+          <p>Price: <%= @con.price %>€</p>
+          <p>Confirme ta réservation</p>
+          <%= f.submit "Je réserve #{@con.name}", class: "btn btn-success rounded-4 text-white" %>
         <% end %>
       </div>
-
     </div>
-  <br>
-<br>
-
-
-<%# carroussel image sur lequel itéré pour afficher le nombre d'image upload par le user %>
-<%#
-
-      <div id="carouselExample" class="carousel slide">
-
-        <div class="carousel-inner">
-
-          <div class="carousel-item active">
-            <img src="..." class="d-block w-100" alt="...">
-          </div>
-
-          <div class="carousel-item">
-            <img src="..." class="d-block w-100" alt="...">
-          </div>
-
-          <div class="carousel-item">
-            <img src="..." class="d-block w-100" alt="...">
-          </div>
-
-        </div>
-
-        <button class="carousel-control-prev" type="button" data-bs-target="#carouselExample" data-bs-slide="prev">
-          <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-          <span class="visually-hidden">Previous</span>
-        </button>
-
-        <button class="carousel-control-next" type="button" data-bs-target="#carouselExample" data-bs-slide="next">
-          <span class="carousel-control-next-icon" aria-hidden="true"></span>
-          <span class="visually-hidden">Next</span>
-        </button>
-
-      </div> %>
-
-
-
-  <div class="d-flex justify-content-evenly" >
-
-    <div class= "pe-4 ">
-      <strong class="test fs-4" >Catégorie </strong> :
-      <strong class="fs-4" > <%= @con.category %> </strong>
-            <br> <br>
-
-
-
-<p>Pour passer des soirées mémorables "<%= @con.name %>" saura vous faire mourrir de rire.</p>
-      <strong class="test">Description </strong> :
-      <%= @con.description %>
-            <br>
-      <%# <strong>Prix :</strong>
-      <%= @con.price %>
-
-
   </div>
 
-    <div class="border border-dark-subtle
-                text-center
-                rounded-4
-                p-2
-                shadow-lg p-3 mb-5 bg-body-tertiary rounded">
-
-
-    <h4>Book <%= @con.name %> for your party </h4>
-    <p>When do you need <%= @con.name %>?</p>
-    <%= simple_form_for [@con, @booking] do |f| %>
-      <%= f.input :date,
-                  as: :string,
-                  input_html: { data: { controller: "datepicker", datepicker_booking_value: @booking_dates.to_json } } %>
-      <p>Price: <%= @con.price %>€</p>
-      <p>Confirm your choice: </p>
-      <%= f.submit "I want #{@con.name} for my party", class: "btn btn-danger rounded-4 text-white" %>
-    <% end %>
+    <div class="btn btn-info rounded-4 mt-4">
+    <%= link_to "Retour à la liste des cons", root_path %>
     </div>
 
-  </div>
-<div class="btn btn-warning rounded-4 text-center">
-<%= link_to "Back to home page", root_path %>
 </div>

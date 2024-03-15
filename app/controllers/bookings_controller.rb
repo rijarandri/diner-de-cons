@@ -3,11 +3,13 @@ class BookingsController < ApplicationController
   before_action :set_con, only: %i[create]
 
   def accept
-    @booking.update(accepted: true)
+    @booking.update(accepted: true) if current_user.id == @booking.con.user_id
+    redirect_to profile_path
   end
 
   def refuse
-    booking.update(accepted: false)
+    @booking.update(accepted: false)
+    redirect_to profile_path
   end
 
   # def new

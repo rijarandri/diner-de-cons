@@ -1,5 +1,29 @@
-.test {
-  color: salmon;
+.con-name {
+  color: rgb(255, 25, 95);
+  font-weight: bold;
+}
+
+.con-img {
+  border-radius: 16px;
+  margin-bottom: 16px;
+}
+
+.img-con {
+  width: 350px;
+  height: 100%;
+  margin: 16px;
+  border-radius: 16px;
+}
+
+.textcat {
+  font-size: large;
+  color: rgb(255, 25, 95);
+}
+
+.con-reservation {
+  padding: 20px;
+  background-color: white;
+  border-radius: 16px;
 }
 
 // .test2 {
@@ -10,6 +34,6 @@
 //     rgba(237, 235, 211, 1) 35%
 //   );
 // }
-.img-con {
-  border-radius: 40%;
-}
+// .img-con {
+//   border-radius: 40%;
+// }

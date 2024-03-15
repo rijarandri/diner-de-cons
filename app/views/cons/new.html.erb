@@ -1,23 +1,24 @@
-<div class="title">
-<h1>Créer votre propre con !</h1>
+
+<h1 class="title mt-4 mb-4">Créez votre propre con !</h1>
+
+  <div class="d-flex align-items-center justify-content-center">
+  <div class="bg-white p-4 rounded-4" style="max-width: 400px;">
+    <%= simple_form_for @con do |f| %>
+      <%= f.input :photos, as: :file, input_html: { multiple: true }, label: "Photos" %>
+      <%= f.input :name, label: "Nom" %>
+      <%= f.input :category, collection: ["con de droite", "chroniqueur france inter", "mysogine", "beauf", "supporter de foot", "zadiste", "influenceur", "avocat fiscaliste", "conspirationniste", "Pascal Praud"], label: "Catégorie" %>
+      <%= f.input :description, label: "Description" %>
+      <%= f.input :price, label: "Prix" %>
+      <%= f.button :submit, "Je crée mon con", class:"btn btn-success rounded-4 text-white" %>
+    <% end %>
+  </div>
+  </div>
+
+
+<div class="btn-back mt-5">
+  <div class="d-flex align-items-center justify-content-center">
+  <%= link_to "Retour à la liste des cons", profile_path, class:"btn btn-info mt-4, rounded-4" %>
+  </div>
 </div>
-
-
-
-<div class="container p-3 mb-2 rounded-4"
-     style="background-color: rgba(53, 47, 68, 0.8);">
-
-   <%= simple_form_for @con do |f| %>
-    <%= f.input :photos, as: :file, input_html: { multiple: true }, label: "Photos" %>
-    <%= f.input :name, label: "Nom" %>
-    <%= f.input :category, collection: ["con de droite", "chroniqueur france inter", "mysogine", "beauf", "supporter de foot", "zadiste", "influenceur", "avocat fiscaliste", "conspirationniste", "Pascal Praud"], label: "Catégorie" %>
-    <%= f.input :description, label: "Description" %>
-    <%= f.input :price, label: "Prix" %>
-    <%= f.button :submit, "Je crée mon con", class:"btn btn-light rounded-4" %>
-<% end %>
-</div>
-
-
-
 
  <%# p-5 my-5 bg-dark text-white rounded-4 %>

@@ -9,8 +9,8 @@ Rails.application.routes.draw do
   resources :cons do
     resources :bookings, only: [:create]
   end
-  patch "accept", to: "bookings#accept"
-  patch "refuse", to: "bookings#refuse"
+  patch "bookings/:id/accept", to: "bookings#accept", as: "accept"
+  patch "bookings/:id/refuse", to: "bookings#refuse", as: "refuse"
   # Reveal health status on /up that returns 200 if the app boots with no exceptions, otherwise 500.
   # Can be used by load balancers and uptime monitors to verify that the app is live.
   get "up" => "rails/health#show", as: :rails_health_check
