@@ -5,9 +5,10 @@ class PagesController < ApplicationController
 
   def profile
     #
+    @bookings = Booking.all
     @user = current_user
     @cons = @user.cons
-    @bookings = @user.bookings.to_a.sort_by! { |booking| booking.date}.reverse!
+    @user_bookings = @user.bookings.to_a.sort_by! { |booking| booking.date}.reverse!
   end
 end
 
