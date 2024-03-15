@@ -1,6 +1,6 @@
 .mes-cons {
   display: grid;
-  grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr;
+  grid-template-columns: 1fr 1fr 1fr 1fr;
   grid-gap: 12px;
 }
 
@@ -41,7 +41,6 @@
 }
 
 .nr {
-
   font-size: 24px;
   color: rgb(255, 25, 95);
 }
@@ -50,6 +49,10 @@
   position: absolute;
   bottom: 0;
 }
+
+// .card-text-tx {
+//   margin-top: 16px;
+// }
 // .mes-bookings {
 //   display: flex;
 //   flex-wrap: wrap;
