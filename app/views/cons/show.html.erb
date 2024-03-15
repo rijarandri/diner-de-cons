@@ -1,7 +1,7 @@
 <h1 class="con-name"><%= @con.name %></h1>
 
 <div class="container">
-  <div class="con-img">
+  <div class="d-flex align-items-center justify-content-center mt-4">
     <% if @con.photos.attached? %>
     <% @con.photos.each do |photo| %>
       <%= cl_image_tag photo.key, height: 300, width: 400, crop: :fill, class: "img-con"%>
@@ -37,8 +37,9 @@
     </div>
   </div>
 
-    <div class="btn btn-info rounded-4 mt-4">
-    <%= link_to "Retour à la liste des cons", root_path %>
-    </div>
+<div class="btn-back">
+  <%= link_to "Retour à la liste des cons", cons_path, class:"btn btn-primary mt-4, rounded-4" %>
+  </div>
+</div>
 
 </div>
