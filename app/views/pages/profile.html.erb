@@ -22,11 +22,6 @@
   <% @user_bookings.each do |booking| %>
     <% if booking.accepted == true && booking.date > Date.today %>
       <div class="mes-cards-bookings-futur me-3">
-        <% if booking.con.photos.attached? %>
-          <% booking.con.photos.each do |photo| %>
-            <img src="<%= cl_image_path(photo.key, height: 100, width: 100) %>" class="card-img-top" alt="Photo de <%= booking.con.name %>">
-          <% end %>
-        <% end %>
         <div class="card-body">
           <h5 class="card-title mb-2"><%= booking.con.name %></h5>
           <p class="card-text"><strong>Date de la réservation :</strong> <%= booking.date %></p>
@@ -44,11 +39,6 @@
   <% @user_bookings.each do |booking| %>
     <% if booking.accepted == true && booking.date <= Date.today %>
       <div class="mes-cards-bookings-past me-3">
-        <% if booking.con.photos.attached? %>
-          <% booking.con.photos.each do |photo| %>
-            <img src="<%= cl_image_path(photo.key, height: 100, width: 100) %>" class="card-img-top" alt="Photo de <%= booking.con.name %>">
-          <% end %>
-        <% end %>
         <div class="card-body">
           <h5 class="card-title mb-2 text-secondary"><%= booking.con.name %></h5>
           <p class="card-text">Date de la réservation : <%= booking.date %></p>
