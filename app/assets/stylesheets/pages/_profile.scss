@@ -1,0 +1,58 @@
+.mes-cons {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr;
+  grid-gap: 12px;
+}
+
+.mes-cards-cons {
+  margin-top: 24px;
+  padding: 12px;
+  border-radius: 16px;
+  background-color: white;
+  border: none;
+}
+
+.t1 {
+  color: rgb(255, 25, 95);
+  font-weight: bold;
+  text-align: center;
+}
+
+.mes-cards-bookings-futur {
+  display: flex;
+  justify-content: flex-start;
+  width: 360px;
+  padding: 16px;
+  background-color: white;
+  border-radius: 16px;
+}
+
+.mes-cards-bookings-past {
+  width: 360px;
+  padding: 16px;
+  background-color: rgb(225, 225, 225);
+  border-radius: 16px;
+}
+
+.mes-bookings h3 {
+  font-size: large;
+  color: rgb(255, 25, 95);
+  font-weight: bold;
+}
+
+.nr {
+  font-size: xx-large;
+  color: rgb(255, 25, 95);
+}
+// .mes-bookings {
+//   display: flex;
+//   flex-wrap: wrap;
+//   justify-content: flex-start;
+//   gap: 20px;
+// }
+
+// .mes-cards-bookings {
+//   padding: 16px;
+//   background-color: white;
+//   border-radius: 16px;
+// }

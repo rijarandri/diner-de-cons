@@ -1,63 +1,70 @@
-<div class="reservations-profile">
+
 
 <%# je n'arrive pas à shuffle un autre con %>
-  <div class="user-reservations">
-    <h2> Mes réservations</h2> <br>
-    <% @user_bookings.each do |booking| %>
-      <div class="accordion accordion-flush" id="accordionFlushExample">
-        <div class="accordion-item">
-          <% if booking.date > Date.today %>
-            <h2 class="accordion-header">
-              <button class="accordion-button collapsed text-success" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapseOne" aria-expanded="false" aria-controls="flush-collapseOne">
-                <%= booking.con.name %>
-              </button>
-            </h2>
-          <% else %>
-            <h2 class="accordion-header">
-            <button class="accordion-button collapsed  text-secondary" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapseOne" aria-expanded="false" aria-controls="flush-collapseOne">
-                <%= booking.con.name %>
-              </button>
-            </h2>
+
+  <h2 class="t1 mb-4 mt-5"> Mes réservations</h2>
+
+<div class="mes-bookings">
+<div class="upc-reservations">
+  <h3>Réservations à venir</h3>
+  <div class="d-flex">
+  <% @bookings.each do |booking| %>
+    <% if booking.date > Date.today %>
+      <div class="mes-cards-bookings-futur me-3">
+        <% if booking.con.photos.attached? %>
+          <% booking.con.photos.each do |photo| %>
+            <img src="<%= cl_image_path(photo.key, height: 100, width: 100) %>" class="card-img-top" alt="Photo de <%= booking.con.name %>">
           <% end %>
-            <div id="flush-collapseOne" class="accordion-collapse collapse" data-bs-parent="#accordionFlushExample">
-              <div class="accordion-body">
-                <p><%= booking.date %></p>
-              </div>
-            </div>
+        <% end %>
+        <div class="card-body">
+          <h5 class="card-title mb-2"><%= booking.con.name %></h5>
+          <p class="card-text"><strong>Date de la réservation :</strong> <%= booking.date %></p>
+          <p class="card-text"><strong>Statut réservation :</strong> À venir</p>
         </div>
       </div>
-      <% end %>
+    <% end %>
+  <% end %>
+  </div>
+  </div>
 
-<% @bookings.each do |booking| %>
-<% if @cons.include?(booking.con) && booking.accepted != true %>
-  <div class="card" style="width: 18rem;">
-  <div class="card-body">
-    <h5 class="card-title">Someone wants to book your con! </h5>
-    <p class="card-text"><strong><%= booking.con.name%></strong></p>
-    <p class="card-text"><strong>on <%= booking.date%></strong></p>
-    <%= link_to "Confirm", accept_path(booking), data: { turbo_method: :patch, turbo_confirm: 'Confirm ?' }, class:"btn btn-success mt-4 rounded-4 mb-4"%>
-    <%= link_to "Refuse", refuse_path(booking), data: { turbo_method: :patch, turbo_confirm: 'Refuse ?' },class:"btn btn-danger mt-4, rounded-4" %>
-
+<div class="past-reservations mt-4">
+  <h3>Réservations passées</h3>
+  <div class="d-flex">
+  <% @bookings.each do |booking| %>
+    <% if booking.date <= Date.today %>
+      <div class="mes-cards-bookings-past me-3">
+        <% if booking.con.photos.attached? %>
+          <% booking.con.photos.each do |photo| %>
+            <img src="<%= cl_image_path(photo.key, height: 100, width: 100) %>" class="card-img-top" alt="Photo de <%= booking.con.name %>">
+          <% end %>
+        <% end %>
+        <div class="card-body">
+          <h5 class="card-title mb-2 text-secondary"><%= booking.con.name %></h5>
+          <p class="card-text">Date de la réservation : <%= booking.date %></p>
+          <p class="card-text">Statut réservation : Passée</p>
+         </div>
+      </div>
+    <% end %>
+  <% end %>
   </div>
 </div>
-<% end %>
-<% end %>
+</div>
 
-
-
-
-        <div>
-
-        </div>
-        <div>
-          <%= link_to "Refuser ma réservation", "#", class:"btn btn-danger mt-4, rounded-4" %>
-        </div>
-        <div>
-          <%= link_to "Créer un con", "#", class:"btn btn-success mt-4, rounded-4 mt-4" %>
-        </div>
+<div class="accept-reservation">
+  <div class="d-flex align-items-center justify-content-center mt-4">
+      <p class="mb-1 me-3"><strong class="nr">1</strong> con en attente de réservation !</p>
+      <%= link_to "Accepter ma réservation", "#", class: "btn btn-success rounded-4 me-3 mb-0" %>
+      <%= link_to "Refuser ma réservation", "#", class: "btn btn-danger rounded-4 mb-0" %>
   </div>
+</div>
 
+<div class="btn-con-create mt-4">
+  <div class="d-flex align-items-center justify-content-center">
+  <%= link_to "Créer un con", "#", class:"btn btn-success mt-4, rounded-4" %>
+  </div>
+</div>
 
+<h2 class="t1 mt-5"> Mes cons</h2>
 
 <div class="mes-cons">
   <% @user.cons.each do |con| %>
@@ -75,5 +82,4 @@
         </div>
       </div>
   <% end %>
-</div>
 </div>
