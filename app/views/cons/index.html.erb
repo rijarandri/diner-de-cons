@@ -18,7 +18,9 @@
       <div class="card" style="width: 18rem;" onclick="location.href='<%= con_path(con) %>'">
         <% if con.photos.attached? %>
           <% photo = con.photos.first %>
-            <img src="<%= cl_image_path(photo.key, height: 300, width: 400, crop: :fill) %>" class="card-img-top" alt="Photo de <%= con.name %>">
+            <%= cl_image_tag photo.key, height: 300, width: 400, crop: :fill, class: "card-img-top" %>
+            <% else %>
+            <%= cl_image_tag @pictures.sample, height: 300, width: 400, class: "card-img-top" %>
           <% end %>
         <div class="card-body">
           <h5 class="card-title"><%= con.name %></h5>

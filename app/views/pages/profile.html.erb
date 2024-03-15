@@ -73,7 +73,7 @@
         <% if con.photos.attached? %>
             <img src="<%= cl_image_path(con.photos.first.key, height: 300, width: 400, crop: :fill) %>" class="card-img-top" alt="Photo de <%= con.name %>">
         <% else %>
-          <img src="<%= cl_image_path("yem8637lxmnfe0cxdikcijaxtd4k", height: 300, width: 400, crop: :fill) %>" class="card-img-top" alt="Photo de <%= con.name %>">
+          <img src="<%= cl_image_path(@pictures.sample, height: 300, width: 400, crop: :fill) %>" class="card-img-top" alt="Photo de <%= con.name %>">
         <% end %>
         <div class="card-body pb-4">
           <h5 class="card-title"><%= con.name %></h5>

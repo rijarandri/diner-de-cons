@@ -9,16 +9,25 @@
 #   end
 
 require "faker"
-
 Con.destroy_all
 
-50.times do
+30.times do
+  user = User.new(
+    email: Faker::Internet.email,
+    password: Faker::Internet.password,
+    first_name: Faker::Name.first_name,
+    last_name: Faker::Name.last_name
+  )
+  user.save
+end
+
+30.times do
   con = Con.new(
     name: Faker::Name.name,
-    price: 100,
+    price: (1..300).to_a.sample,
     description: "Vraiment très con pour animer vos soirées. Avec lui, vous avez les meilleures chances de gagner!",
     category: ["con de droite", "chroniqueur france inter", "mysogine", "beauf", "supporter de foot", "zadiste", "influenceur", "avocat fiscaliste", "conspirationniste", "Pascal Praud"].sample,
-    user_id: 1
+    user_id: (1..30).to_a.sample
   )
   con.save!
 end

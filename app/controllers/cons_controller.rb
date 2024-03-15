@@ -3,6 +3,7 @@ class ConsController < ApplicationController
 
   def index
     @cons = Con.all
+    @pictures = ["ektqxe6k0fqts6gg1mmq", "rnlcc7qpih5ow7vmxklh", "dd5tz4n4cakrgs2weqdz", "pchrfs4qq7onj2uhocif", "z9v0ynqutvlkwqecmtpu", "cfpbeyje1oaoxx8mejpf", "mtusoueesd2xry2hzwbn", "la6vyrinnxtvax9ozlvh", "yszodyrsybaili1ybdgy", "usyj8ekrkmneangld3xj", "p13ooyt7cuanpygmhfne", "yc6ds5yt9uwjojkuhkt0", "jng6chw4rfn9ms7dbkyb", "kxdzcgddb6jihcovkpn1", "fvwecmgjigrjtayi7v18", "xwnho5f2brqi9rdpobci", "mh3nos7ix08gfgprinfl", "mh3nos7ix08gfgprinfl"]
     @categories = ["con de droite", "chroniqueur france inter", "mysogine", "beauf", "supporter de foot", "zadiste", "influenceur", "avocat fiscaliste", "conspirationniste", "Pascal Praud"]
     if params[:category].present?
       @cons = Con.where(category: params[:category])
