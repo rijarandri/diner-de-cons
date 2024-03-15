@@ -1,4 +1,17 @@
 
+<% @bookings.each do |booking| %>
+  <% if @cons.include?(booking.con) && booking.accepted != true %>
+    <div class="accept-reservation">
+      <div class="d-flex align-items-center justify-content-between mt-4">
+          <p class="mb-1 me-3"><strong class="nr"><%= booking.con.name%></strong> con en attente de réservation le <strong><%= booking.date.strftime('%d-%m-%Y')%></strong></p>
+          <div>
+          <%= link_to "Confirm", accept_path(booking), data: { turbo_method: :patch, turbo_confirm: 'Confirm ?' }, class: "btn btn-success rounded-4 me-3 mb-0" %>
+          <%= link_to "Refuse", refuse_path(booking), data: { turbo_method: :patch, turbo_confirm: 'Refuse ?' }, class: "btn btn-danger rounded-4 mb-0" %>
+          </div>
+      </div>
+    </div>
+  <% end %>
+<% end %>
 
 <%# je n'arrive pas à shuffle un autre con %>
 
@@ -9,7 +22,7 @@
   <h3>Réservations à venir</h3>
   <div class="d-flex">
   <% @bookings.each do |booking| %>
-    <% if booking.date > Date.today %>
+    <% if booking.accepted == true && booking.date > Date.today %>
       <div class="mes-cards-bookings-futur me-3">
         <% if booking.con.photos.attached? %>
           <% booking.con.photos.each do |photo| %>
@@ -31,7 +44,7 @@
   <h3>Réservations passées</h3>
   <div class="d-flex">
   <% @bookings.each do |booking| %>
-    <% if booking.date <= Date.today %>
+    <% if booking.accepted == true && booking.date <= Date.today %>
       <div class="mes-cards-bookings-past me-3">
         <% if booking.con.photos.attached? %>
           <% booking.con.photos.each do |photo| %>
@@ -48,14 +61,6 @@
   <% end %>
   </div>
 </div>
-</div>
-
-<div class="accept-reservation">
-  <div class="d-flex align-items-center justify-content-center mt-4">
-      <p class="mb-1 me-3"><strong class="nr">1</strong> con en attente de réservation !</p>
-      <%= link_to "Accepter ma réservation", "#", class: "btn btn-success rounded-4 me-3 mb-0" %>
-      <%= link_to "Refuser ma réservation", "#", class: "btn btn-danger rounded-4 mb-0" %>
-  </div>
 </div>
 
 <div class="btn-con-create mt-4">
